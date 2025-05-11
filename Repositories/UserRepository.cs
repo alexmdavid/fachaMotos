@@ -46,5 +46,9 @@ namespace fachaMotos.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+        public async Task<User?> ObtenerPorCorreoAsync(string correo)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Correo == correo);
+        }
     }
 }

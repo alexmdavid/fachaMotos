@@ -13,7 +13,7 @@ namespace fachaMotos.Models.Entities
 
         public string Correo { get; set; }
 
-        public string Clave { get; set; }
+        public string ClaveHash { get; set; }
 
         public static implicit operator User(Review v)
         {

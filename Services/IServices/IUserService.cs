@@ -1,5 +1,6 @@
 ﻿namespace fachaMotos.Services.IServices
 {
+    using global::fachaMotos.Models.DTOs;
     using global::fachaMotos.Models.Entities;
 
     namespace fachaMotos.Services.IServices
@@ -11,6 +12,7 @@
             Task AddUserAsync(User user);
             Task UpdateUserAsync(User user);
             Task DeleteUserAsync(int id);
+            Task<AuthResponseDTO> LoginAsync(LoginDTO dto);
         }
     }
 
