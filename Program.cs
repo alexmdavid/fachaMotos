@@ -16,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var config = builder.Configuration;
 
-var key = Encoding.UTF8.GetBytes(config["Authentication:Jwt:Key"]);
+var key = Encoding.UTF8.GetBytes(config["Jwt:Key"]);
 
 builder.Services.AddAuthentication(options =>
 {
@@ -31,8 +31,8 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidateLifetime = true,
         ValidateIssuerSigningKey = true,
-        ValidIssuer = config["Authentication:Jwt:Issuer"],
-        ValidAudience = config["Authentication:Jwt:Audience"],
+        ValidIssuer = config["Jwt:Issuer"],
+        ValidAudience = config["Jwt:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(key)
     };
 })
