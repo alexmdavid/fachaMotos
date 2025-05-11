@@ -68,7 +68,7 @@ namespace fachaMotos.Services
             var hash = Convert.ToBase64String(SHA256.HashData(Encoding.UTF8.GetBytes(dto.Clave)));
             if (hash != usuario.ClaveHash)
                 throw new Exception("Contraseña incorrecta.");
-            var token = Jwt.GenerarToken(usuario, _config["Jwt:Key"]);
+            var token = Jwt.GenerarToken(usuario, _config);
             return new AuthResponseDTO
             {
                 Token = token,

@@ -14,6 +14,35 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var config = builder.Configuration;
+
+var key = Encoding.UTF8.GetBytes(config["Authentication:Jwt:Key"]);
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = config["Authentication:Jwt:Issuer"],
+        ValidAudience = config["Authentication:Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(key)
+    };
+})
+.AddGoogle("Google", options =>
+{
+    options.ClientId = config["Authentication:Google:ClientId"];
+    options.ClientSecret = config["Authentication:Google:ClientSecret"];
+    options.SignInScheme = "External"; 
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -60,30 +89,6 @@ builder.Services.AddScoped<IReviewService, ReviewService>();
 
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<IAdminService, AdminService>();
-
-var claveJwt = builder.Configuration["Jwt:Key"];
-var key = Encoding.UTF8.GetBytes(claveJwt);
-
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = "pvtos y pvtas",
-        ValidAudience = "pvtos y pvtas",
-        IssuerSigningKey = new SymmetricSecurityKey(key)
-    };
-});
-
-
 
 var app = builder.Build();
 
