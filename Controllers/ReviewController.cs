@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using fachaMotos.Models.Entities;
 using fachaMotos.Services.IServices.fachaMotos.Services.IServices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace fachaMotos.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class ReviewController : ControllerBase
     {
         private readonly IReviewService _reviewService;

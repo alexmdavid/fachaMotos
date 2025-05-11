@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using fachaMotos.Models.Entities;
 using fachaMotos.Services.IServices.fachaMotos.Services.IServices;
+using fachaMotos.Models.DTOs;
 
 namespace fachaMotos.Controllers
 {
@@ -25,11 +26,18 @@ namespace fachaMotos.Controllers
             return user == null ? NotFound() : Ok(user);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(User user)
+        [HttpPost("registro")]
+        public async Task<IActionResult> Registro([FromBody] RegistroDTO dto)
         {
-            await _userService.AddUserAsync(user);
-            return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
+            try
+            {
+                var usuario = await _userService.RegistrarAsync(dto);
+                return Ok(usuario);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { mensaje = ex.Message });
+            }
         }
 
         [HttpPut("{id}")]
@@ -46,5 +54,19 @@ namespace fachaMotos.Controllers
             await _userService.DeleteUserAsync(id);
             return NoContent();
         }
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginDTO dto)
+        {
+            try
+            {
+                var respuesta = await _userService.LoginAsync(dto);
+                return Ok(respuesta);
+            }
+            catch (Exception ex)
+            {
+                return Unauthorized(new { mensaje = ex.Message });
+            }
+        }
     }
+
 }

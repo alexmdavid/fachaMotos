@@ -29,9 +29,25 @@ namespace fachaMotos.Services
             return await _userRepository.GetUserByIdAsync(id);
         }
 
-        public async Task AddUserAsync(User user)
+        public async Task<UsuarioDTO> RegistrarAsync(RegistroDTO dto)
         {
-            await _userRepository.AddUserAsync(user);
+            if (await _userRepository.ObtenerPorCorreoAsync(dto.Correo) is not null)
+                throw new Exception("El correo ya está registrado.");
+            var hash = Convert.ToBase64String(SHA256.HashData(Encoding.UTF8.GetBytes(dto.Contrasena)));
+            var nuevo = new User
+            {
+                Nombre = dto.Nombre,
+                Correo = dto.Correo,
+                ClaveHash = hash
+            };
+            await _userRepository.AddUserAsync(nuevo); 
+
+            return new UsuarioDTO
+            {
+                Id = nuevo.Id,  
+                Nombre = nuevo.Nombre,
+                Correo = nuevo.Correo
+            };
         }
 
         public async Task UpdateUserAsync(User user)
