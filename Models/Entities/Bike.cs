@@ -25,11 +25,10 @@ namespace fachaMotos.Models.Entities
 
         public int medidaNeumaticoTrasero { get; set; }
 
-        public string Transmision { get; set; } = string.Empty; // ej: 6 velocidades
+        public string Transmision { get; set; } = string.Empty; 
         public int PesoKg { get; set; }
         public double CapacidadCombustibleL { get; set; }
 
-        // Extras
         public string ImagenUrl { get; set; } = string.Empty;
         public string Descripcion { get; set; } = string.Empty;
     }

@@ -46,5 +46,19 @@ namespace fachaMotos.Controllers
             await _bikeService.DeleteBikeAsync(id);
             return NoContent();
         }
+        [HttpPost("bulk")]
+        public async Task<IActionResult> CreateMultiple([FromBody] List<Bike> bikes)
+        {
+            if (bikes == null || !bikes.Any())
+                return BadRequest("La lista de motos no puede estar vacía.");
+
+            foreach (var bike in bikes)
+            {
+                await _bikeService.AddBikeAsync(bike);
+            }
+
+            return Ok(new { message = $"{bikes.Count} motos agregadas exitosamente." });
+        }
+
     }
 }
