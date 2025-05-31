@@ -31,6 +31,8 @@ namespace fachaMotos.Models.Entities
 
         public string ImagenUrl { get; set; } = string.Empty;
         public string Descripcion { get; set; } = string.Empty;
+        public List<MotoFavorita> MotosFavoritas { get; set; } = new List<MotoFavorita>();
+
     }
 
 }
