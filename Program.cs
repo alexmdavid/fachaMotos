@@ -8,7 +8,6 @@ using fachaMotos.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Text;
 using Microsoft.OpenApi.Models;
 
@@ -89,6 +88,9 @@ builder.Services.AddScoped<IReviewService, ReviewService>();
 
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<IAdminService, AdminService>();
+
+builder.Services.AddScoped<IUserFavoritosRepository, UserFavoritosRepository>();
+builder.Services.AddScoped<IUserFavoritosService, UserFavoritosService>();
 
 //mis hermosas cors
 builder.Services.AddCors(options =>

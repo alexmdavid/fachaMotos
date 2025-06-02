@@ -19,5 +19,7 @@ namespace fachaMotos.Models.Entities
         {
             throw new NotImplementedException();
         }
+        public List<UserBikeFavorita> MotosFavoritas { get; set; } = new List<UserBikeFavorita>();
+
     }
 }

@@ -7,31 +7,26 @@ namespace fachaMotos.Data
     public class AppDbContext: DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-
         public DbSet<User> Users { get; set; }
         public DbSet<Bike> Bikes { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Review> Reviews { get; set; }
-        public DbSet<ListaDeFavoritos> ListasDeFavoritos { get; set; }
-        public DbSet<MotoFavorita> MotosFavoritas { get; set; }
-
+        public DbSet<UserBikeFavorita> ListasDeFavoritos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<MotoFavorita>()
-                .HasKey(mf => new { mf.ListaDeFavoritosId, mf.MotoId });
+            modelBuilder.Entity<UserBikeFavorita>()
+                .HasKey(f => new { f.UserId, f.BikeId });
 
-            modelBuilder.Entity<MotoFavorita>()
-                .HasOne(mf => mf.ListaDeFavoritos)
-                .WithMany(lf => lf.MotosFavoritas)
-                .HasForeignKey(mf => mf.ListaDeFavoritosId);
+            modelBuilder.Entity<UserBikeFavorita>()
+                .HasOne(f => f.User)
+                .WithMany(u => u.MotosFavoritas)
+                .HasForeignKey(f => f.UserId);
 
-            modelBuilder.Entity<MotoFavorita>()
-                .HasOne(mf => mf.Moto)
-                .WithMany(m => m.MotosFavoritas)
-                .HasForeignKey(mf => mf.MotoId);
+            modelBuilder.Entity<UserBikeFavorita>()
+                .HasOne(f => f.Bike)
+                .WithMany(b => b.UsuariosQueLaTienenComoFavorita)
+                .HasForeignKey(f => f.BikeId);
         }
-
-
 
     }
 }

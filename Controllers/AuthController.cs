@@ -10,7 +10,6 @@ namespace fachaMotos.Controllers
     public class AuthController : Controller
     {
         private readonly IConfiguration _config;
-
         public AuthController(IConfiguration config)
         {
             _config = config;
@@ -30,11 +29,8 @@ namespace fachaMotos.Controllers
             var result = await HttpContext.AuthenticateAsync("External");
             if (!result.Succeeded)
                 return BadRequest();
-
             var email = result.Principal.FindFirst(ClaimTypes.Email)?.Value;
             var name = result.Principal.FindFirst(ClaimTypes.Name)?.Value;
-
-            
             var claims = new[]
             {
             new Claim(ClaimTypes.Email, email),
@@ -43,7 +39,6 @@ namespace fachaMotos.Controllers
         };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Authentication:Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
             var token = new JwtSecurityToken(
                 issuer: _config["Authentication:Jwt:Issuer"],
                 audience: _config["Authentication:Jwt:Audience"],
