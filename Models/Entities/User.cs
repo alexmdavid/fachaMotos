@@ -9,17 +9,23 @@ namespace fachaMotos.Models.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [MaxLength(100)]
+        [Required]
         public string Nombre { get; set; }
 
+        [MaxLength(160)]
+        [EmailAddress]
+        [Required]
         public string Correo { get; set; }
 
+        [MinLength(8)]
+        [Required]
         public string ClaveHash { get; set; }
 
-        public static implicit operator User(Review v)
-        {
-            throw new NotImplementedException();
-        }
         public List<UserBikeFavorita> MotosFavoritas { get; set; } = new List<UserBikeFavorita>();
+
+        [Required]
+        public string Rol { get; set; }= "usuario";
 
     }
 }

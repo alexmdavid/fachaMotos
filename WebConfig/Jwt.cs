@@ -15,7 +15,8 @@
             {
         new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
         new Claim(ClaimTypes.Email, usuario.Correo),
-        new Claim(ClaimTypes.Name, usuario.Nombre)
+        new Claim(ClaimTypes.Name, usuario.Nombre),
+        new Claim(ClaimTypes.Role, usuario.Rol)
     };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
