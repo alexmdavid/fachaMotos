@@ -9,5 +9,7 @@ namespace fachaMotos.Repositories.IRepositories
         Task AddReviewAsync(Review review);
         Task UpdateReviewAsync(Review review);
         Task DeleteReviewAsync(int id);
+        Task<List<Review>> GetReviewsByBikeIdAsync(int bikeId);
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using fachaMotos.Models.Entities;
 using fachaMotos.Services.IServices.fachaMotos.Services.IServices;
+using Microsoft.AspNetCore.Authorization;
 
 namespace fachaMotos.Controllers
 {
@@ -26,6 +27,7 @@ namespace fachaMotos.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Create(Bike bike)
         {
             await _bikeService.AddBikeAsync(bike);
@@ -33,6 +35,7 @@ namespace fachaMotos.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Update(int id, Bike bike)
         {
             if (id != bike.Id) return BadRequest();
@@ -41,12 +44,14 @@ namespace fachaMotos.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> Delete(int id)
         {
             await _bikeService.DeleteBikeAsync(id);
             return NoContent();
         }
         [HttpPost("bulk")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> CreateMultiple([FromBody] List<Bike> bikes)
         {
             if (bikes == null || !bikes.Any())

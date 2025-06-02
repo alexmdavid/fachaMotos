@@ -2,6 +2,8 @@
 using fachaMotos.Models.Entities;
 using fachaMotos.Services.IServices.fachaMotos.Services.IServices;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using fachaMotos.Models.DTOs;
 
 namespace fachaMotos.Controllers
 {
@@ -22,9 +24,11 @@ namespace fachaMotos.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> GetAll() => Ok(await _reviewService.GetAllReviewsAsync());
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetById(int id)
         {
             var review = await _reviewService.GetReviewByIdAsync(id);
@@ -32,15 +36,17 @@ namespace fachaMotos.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] Review review)
+        [Authorize]
+        public async Task<IActionResult> Create([FromBody] CrearReviewRequest review)
         {
-            await _reviewService.AddReviewAsync(review);
-            return CreatedAtAction(nameof(GetById), new { id = review.Id }, review);
+            var userId = obtenerUserId();
+            await _reviewService.AddReviewAsync(review, userId);
+            return Ok();
         }
 
 
-
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> Update(int id, Review review)
         {
             if (id != review.Id) return BadRequest();
@@ -49,10 +55,25 @@ namespace fachaMotos.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             await _reviewService.DeleteReviewAsync(id);
             return NoContent();
+        }
+
+        [HttpGet("{bikeId}/reviews")]
+        public async Task<IActionResult> GetReviewsByBikeId(int bikeId)
+        {
+            var reviews = await _reviewService.GetReviewsByBikeIdAsync(bikeId);
+            return Ok(reviews);
+        }
+
+        [HttpGet("obtenerUserId")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public int obtenerUserId()
+        {
+            return int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
         }
     }
 }

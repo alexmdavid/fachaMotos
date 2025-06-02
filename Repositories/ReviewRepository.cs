@@ -44,5 +44,16 @@ namespace fachaMotos.Repositories
             _context.Reviews.Update(review);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<List<Review>> GetReviewsByBikeIdAsync(int bikeId)
+        {
+            return await _context.Reviews
+                .Where(r => r.BikeId == bikeId)
+                .Include(r => r.User)  
+                .Include(r => r.Bike)  
+                .ToListAsync();
+        }
+
+
     }
 }
