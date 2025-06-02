@@ -86,9 +86,6 @@ builder.Services.AddScoped<IBikeService, BikeService>();
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 builder.Services.AddScoped<IReviewService, ReviewService>();
 
-builder.Services.AddScoped<IAdminRepository, AdminRepository>();
-builder.Services.AddScoped<IAdminService, AdminService>();
-
 builder.Services.AddScoped<IUserFavoritosRepository, UserFavoritosRepository>();
 builder.Services.AddScoped<IUserFavoritosService, UserFavoritosService>();
 
