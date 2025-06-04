@@ -1,13 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace fachaMotos.Models.Entities
+﻿namespace fachaMotos.Models.DTOs
 {
-    public class Bike
+    public class FichaTecnicaDTO
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }  
 
         public string Marca { get; set; } = string.Empty;
         public string Modelo { get; set; } = string.Empty;
@@ -18,19 +12,12 @@ namespace fachaMotos.Models.Entities
         public double TorqueNm { get; set; }
         public string Motor { get; set; } = string.Empty; 
         public string Refrigeracion { get; set; } = string.Empty; 
-
         public int medidaNeumaticoDelantero { get; set; }
-
         public int medidaNeumaticoTrasero { get; set; }
-
-        public string Transmision { get; set; } = string.Empty; 
+        public string Transmision { get; set; } = string.Empty;
         public int PesoKg { get; set; }
         public double CapacidadCombustibleL { get; set; }
-
         public string ImagenUrl { get; set; } = string.Empty;
         public string Descripcion { get; set; } = string.Empty;
-        public List<UserBikeFavorita> UsuariosQueLaTienenComoFavorita { get; set; } = new List<UserBikeFavorita>();
-
     }
-
 }
