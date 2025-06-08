@@ -2,6 +2,7 @@
 using fachaMotos.Models.Entities;
 using fachaMotos.Services.IServices.fachaMotos.Services.IServices;
 using Microsoft.AspNetCore.Authorization;
+using fachaMotos.Models.DTOs;
 
 namespace fachaMotos.Controllers
 {
@@ -28,7 +29,7 @@ namespace fachaMotos.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> Create(Bike bike)
+        public async Task<IActionResult> Create(BikeDTO bike)
         {
             await _bikeService.AddBikeAsync(bike);
             return CreatedAtAction(nameof(GetById), new { id = bike.Id }, bike);
@@ -36,7 +37,7 @@ namespace fachaMotos.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> Update(int id, Bike bike)
+        public async Task<IActionResult> Update(int id, BikeDTO bike)
         {
             if (id != bike.Id) return BadRequest();
             await _bikeService.UpdateBikeAsync(bike);
@@ -52,7 +53,7 @@ namespace fachaMotos.Controllers
         }
         [HttpPost("bulk")]
         [Authorize(Roles = "Administrador")]
-        public async Task<IActionResult> CreateMultiple([FromBody] List<Bike> bikes)
+        public async Task<IActionResult> CreateMultiple([FromBody] List<BikeDTO> bikes)
         {
             if (bikes == null || !bikes.Any())
                 return BadRequest("La lista de motos no puede estar vacía.");
