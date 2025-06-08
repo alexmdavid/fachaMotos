@@ -12,10 +12,12 @@
             private readonly IReviewRepository _reviewRepository;
             private readonly IBikeService _bikeService;
 
-            public ReviewService(IReviewRepository reviewRepository)
+            public ReviewService(IReviewRepository reviewRepository, IBikeService bikeService)
             {
                 _reviewRepository = reviewRepository;
+                _bikeService = bikeService;
             }
+
 
             public async Task<IEnumerable<Review>> GetAllReviewsAsync()
             {

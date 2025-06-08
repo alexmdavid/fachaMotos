@@ -1,7 +1,6 @@
 ﻿namespace fachaMotos.Services.IServices
 {
     using global::fachaMotos.Models.DTOs;
-    using global::fachaMotos.Models.Entities;
 
     namespace fachaMotos.Services.IServices
     {
@@ -12,6 +11,7 @@
             Task AddBikeAsync(BikeDTO bike);
             Task UpdateBikeAsync(BikeDTO bike);
             Task DeleteBikeAsync(int id);
+            Task<List<BikeWithRatingDTO>> GetBikesWithRatingsAsync();
         }
     }
 

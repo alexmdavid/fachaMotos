@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using fachaMotos.Models.Entities;
 using fachaMotos.Services.IServices.fachaMotos.Services.IServices;
 using fachaMotos.Models.DTOs;
 

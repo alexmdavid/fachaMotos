@@ -2,6 +2,7 @@
 using fachaMotos.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using fachaMotos.Repositories.IRepositories.fachaMotos.Repositories;
+using fachaMotos.Models.DTOs;
 
 namespace fachaMotos.Repositories
 {
@@ -34,6 +35,10 @@ namespace fachaMotos.Repositories
             return await _context.Bikes.ToListAsync();
         }
 
+        public async Task<IEnumerable<Bike>> RankingMotosAsync() {
+            return null;
+        }
+
         public async Task<Bike> GetBikeByIdAsync(int id)
         {
             return await _context.Bikes.FindAsync(id);
@@ -44,5 +49,21 @@ namespace fachaMotos.Repositories
             _context.Bikes.Update(bike);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<List<BikeWithRatingDTO>> GetBikesWithRatingsAsync()
+        {
+            return await _context.Bikes
+                .Select(b => new BikeWithRatingDTO
+                {
+                    Bike = b,
+                    AvgRating = _context.Reviews
+                        .Where(r => r.BikeId == b.Id)
+                        .Average(r => (double?)r.Calificacion) ?? 0
+                })
+                .OrderByDescending(x => x.AvgRating)
+                .ToListAsync();
+        }
+
+
     }
 }

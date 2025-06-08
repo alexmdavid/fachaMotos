@@ -1,5 +1,6 @@
 ﻿namespace fachaMotos.Repositories.IRepositories
 {
+    using global::fachaMotos.Models.DTOs;
     using global::fachaMotos.Models.Entities;
 
     namespace fachaMotos.Repositories
@@ -11,6 +12,7 @@
             Task AddBikeAsync(Bike bike);
             Task UpdateBikeAsync(Bike bike);
             Task DeleteBikeAsync(int id);
+            Task<List<BikeWithRatingDTO>> GetBikesWithRatingsAsync();
         }
     }
 }

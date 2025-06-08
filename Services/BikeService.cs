@@ -120,6 +120,13 @@
             {
                 await _bikeRepository.DeleteBikeAsync(id);
             }
+            public async Task<List<BikeWithRatingDTO>> GetBikesWithRatingsAsync()
+            {
+                var bikesWithRatings = await _bikeRepository.GetBikesWithRatingsAsync();
+                return bikesWithRatings;
+
+            }
+
         }
     }
 

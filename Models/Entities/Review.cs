@@ -12,7 +12,7 @@ namespace fachaMotos.Models.Entities
         public int Calificacion { get; set; }
         [Required]
         public string Comentario { get; set; }
-        public DateTime Fecha { get; set; } = DateTime.Now;
+        public DateTime Fecha { get; set; } = DateTime.UtcNow;
         public int UserId { get; set; }
         public int BikeId { get; set; }
         public User User { get; set; }

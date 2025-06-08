@@ -66,5 +66,13 @@ namespace fachaMotos.Controllers
             return Ok(new { message = $"{bikes.Count} motos agregadas exitosamente." });
         }
 
+        [HttpGet("ranking")]
+        
+        public async Task<IActionResult> GetRanking()
+        {
+            var bikes = await _bikeService.GetBikesWithRatingsAsync();
+            return Ok(bikes);
+
+        }
     }
 }
