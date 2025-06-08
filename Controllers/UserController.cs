@@ -41,7 +41,7 @@ namespace fachaMotos.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, User user)
+        public async Task<IActionResult> Update(int id, UpdateUserDTO user)
         {
             if (id != user.Id) return BadRequest();
             await _userService.UpdateUserAsync(user);

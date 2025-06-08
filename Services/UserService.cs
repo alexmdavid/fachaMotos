@@ -50,8 +50,15 @@ namespace fachaMotos.Services
             };
         }
 
-        public async Task UpdateUserAsync(User user)
+        public async Task UpdateUserAsync(UpdateUserDTO _user)
         {
+            var user = new User
+            {
+                Id = _user.Id,
+                Nombre = _user.Nombre,
+                Correo = _user.Correo,
+                ClaveHash = _user.ClaveHash
+            };
             await _userRepository.UpdateUserAsync(user);
         }
 
