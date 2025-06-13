@@ -31,6 +31,7 @@ namespace fachaMotos.Models.Entities
         public string Descripcion { get; set; } = string.Empty;
         public List<UserBikeFavorita> UsuariosQueLaTienenComoFavorita { get; set; } = new List<UserBikeFavorita>();
 
+        public List<ComentarioMoto> Comentarios { get; set; } = new List<ComentarioMoto>();
     }
 
 }

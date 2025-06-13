@@ -13,6 +13,7 @@
             Task UpdateBikeAsync(Bike bike);
             Task DeleteBikeAsync(int id);
             Task<List<BikeWithRatingDTO>> GetBikesWithRatingsAsync();
+            Task<IEnumerable<Bike>> GetBikesPagedAsync(int pageNumber, int pageSize);
         }
     }
 }

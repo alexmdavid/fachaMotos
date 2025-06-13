@@ -20,7 +20,7 @@ namespace fachaMotos.Models.Entities
         public string? Categoria { get; set; } 
         public string? ImagenUrl { get; set; }
         public string? Etiquetas { get; set; } 
-        public List<Comentario> Comentarios { get; set; } = new List<Comentario>();
+        public List<ComentarioBlog> Comentarios { get; set; } = new List<ComentarioBlog>();
     }
 
 }

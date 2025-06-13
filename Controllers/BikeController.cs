@@ -74,5 +74,16 @@ namespace fachaMotos.Controllers
             return Ok(bikes);
 
         }
+
+        [HttpGet("paged")]
+        public async Task<IActionResult> GetPaged([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 9)
+        {
+            if (pageNumber <= 0 || pageSize <= 0)
+                return BadRequest("Parámetros de paginación inválidos.");
+
+            var bikes = await _bikeService.GetBikesPagedAsync(pageNumber, pageSize);
+            return Ok(bikes);
+        }
+
     }
 }

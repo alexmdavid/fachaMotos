@@ -35,10 +35,6 @@ namespace fachaMotos.Repositories
             return await _context.Bikes.ToListAsync();
         }
 
-        public async Task<IEnumerable<Bike>> RankingMotosAsync() {
-            return null;
-        }
-
         public async Task<Bike> GetBikeByIdAsync(int id)
         {
             return await _context.Bikes.FindAsync(id);
@@ -63,6 +59,15 @@ namespace fachaMotos.Repositories
                 .OrderByDescending(x => x.AvgRating)
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<Bike>> GetBikesPagedAsync(int pageNumber, int pageSize)
+        {
+            return await _context.Bikes
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+
 
 
     }
