@@ -126,33 +126,12 @@
                 return bikesWithRatings;
 
             }
-            public async Task<IEnumerable<BikeDTO>> GetBikesPagedAsync(int pageNumber, int pageSize)
+            public async Task<List<BikeWithRatingDTO>> GetBikesPagedWithRatingsAsync(int pageNumber, int pageSize)
             {
-                var bikes = await _bikeRepository.GetBikesPagedAsync(pageNumber, pageSize);
-                return bikes.Select(b => new BikeDTO
-                {
-                    Id = b.Id,
-                    Marca = b.Marca,
-                    Modelo = b.Modelo,
-                    Año = b.Año,
-                    Tipo = b.Tipo,
-                    CilindrajeCC = b.CilindrajeCC,
-                    PotenciaHP = b.PotenciaHP,
-                    TorqueNm = b.TorqueNm,
-                    Motor = b.Motor,
-                    Refrigeracion = b.Refrigeracion,
-                    medidaNeumaticoDelantero = b.medidaNeumaticoDelantero,
-                    medidaNeumaticoTrasero = b.medidaNeumaticoTrasero,
-                    Transmision = b.Transmision,
-                    PesoKg = b.PesoKg,
-                    CapacidadCombustibleL = b.CapacidadCombustibleL,
-                    ImagenUrl = b.ImagenUrl,
-                    Descripcion = b.Descripcion
-                }).ToList();
+                return await _bikeRepository.GetBikesPagedWithRatingsAsync(pageNumber, pageSize);
             }
-
-
         }
     }
-
 }
+
+

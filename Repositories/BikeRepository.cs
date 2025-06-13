@@ -60,13 +60,22 @@ namespace fachaMotos.Repositories
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Bike>> GetBikesPagedAsync(int pageNumber, int pageSize)
+        public async Task<List<BikeWithRatingDTO>> GetBikesPagedWithRatingsAsync(int pageNumber, int pageSize)
         {
             return await _context.Bikes
+                .OrderBy(b => b.Id)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
+                .Select(b => new BikeWithRatingDTO
+                {
+                    Bike = b,
+                    AvgRating = _context.Reviews
+                        .Where(r => r.BikeId == b.Id)
+                        .Average(r => (double?)r.Calificacion) ?? 0
+                })
                 .ToListAsync();
         }
+
 
 
 

@@ -81,7 +81,7 @@ namespace fachaMotos.Controllers
             if (pageNumber <= 0 || pageSize <= 0)
                 return BadRequest("Parámetros de paginación inválidos.");
 
-            var bikes = await _bikeService.GetBikesPagedAsync(pageNumber, pageSize);
+            var bikes = await _bikeService.GetBikesPagedWithRatingsAsync(pageNumber, pageSize);
             return Ok(bikes);
         }
 
