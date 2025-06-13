@@ -26,6 +26,7 @@ namespace fachaMotos.Models.Entities
 
         [Required]
         public string Rol { get; set; }= "Administrador";
+        public List<Comentario> Comentarios { get; set; } = new List<Comentario>();
 
     }
 }
