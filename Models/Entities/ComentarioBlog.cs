@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using fachaMotos.Enums;
 
 namespace fachaMotos.Models.Entities
 {
@@ -17,6 +18,8 @@ namespace fachaMotos.Models.Entities
         public Blog Blog { get; set; }
         public int UsuarioId { get; set; }
         public User Usuario { get; set; }
+        public List<ComentarioBlogReaction> Reacciones { get; set; } = new List<ComentarioBlogReaction>();
+
     }
 
 }

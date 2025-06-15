@@ -13,6 +13,8 @@
             Task DeleteBikeAsync(int id);
             Task<List<BikeWithRatingDTO>> GetBikesWithRatingsAsync();
             Task<List<BikeWithRatingDTO>> GetBikesPagedWithRatingsAsync(int pageNumber, int pageSize);
+           
+
 
         }
     }

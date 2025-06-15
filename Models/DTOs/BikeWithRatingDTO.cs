@@ -6,6 +6,8 @@ namespace fachaMotos.Models.DTOs
     {
         public Bike Bike { get; set; }
         public double AvgRating { get; set; }
+        public List<ReviewDTO> Reviews { get; set; } = new List<ReviewDTO>();
     }
+
 
 }

@@ -1,8 +1,8 @@
 ﻿using fachaMotos.Data;
+using fachaMotos.Enums;
+using fachaMotos.Models.DTOs;
 using fachaMotos.Models.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace fachaMotos.Repositories
 {
@@ -46,5 +46,36 @@ namespace fachaMotos.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+        public async Task<List<BlogWithComentDTO>> GetBlogWithComents(int pageNumber, int pageSize)
+        {
+            var blogs = await _context.Blogs
+                .Include(b => b.Comentarios)
+                    .ThenInclude(c => c.Usuario)
+                .Include(b => b.Comentarios)
+                    .ThenInclude(c => c.Reacciones) 
+                .OrderBy(b => b.Id)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            var result = blogs.Select(b => new BlogWithComentDTO
+            {
+                Blog = b,
+                Comentarios = b.Comentarios.Select(c => new ComentarioBlogDTO
+                {
+                    Id = c.Id,
+                    Contenido = c.Contenido,
+                    Fecha = c.FechaComentario,
+                    UsuarioNombre = c.Usuario.Nombre,
+                    UsuarioFotoUrl = c.Usuario.ImagenPerfilUrl,
+                    CantidadLikes = c.Reacciones.Count(r => r.Tipo == ReactionType.Like),
+                    CantidadUnlikes = c.Reacciones.Count(r => r.Tipo == ReactionType.Unlike)
+                }).ToList()
+            }).ToList();
+
+            return result;
+        }
+
+
     }
 }

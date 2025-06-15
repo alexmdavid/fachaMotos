@@ -18,6 +18,7 @@ namespace fachaMotos.Models.Entities
         public User User { get; set; }
         public Bike Bike { get; set; }
 
+        public List<ReviewReaction> Reacciones { get; set; } = new List<ReviewReaction>();
 
     }
 }

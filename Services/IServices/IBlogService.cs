@@ -9,5 +9,7 @@ namespace fachaMotos.Services.IServices
         Task AddBlogAsync(BlogDTO blogDto);
         Task UpdateBlogAsync(BlogDTO blogDto);
         Task DeleteBlogAsync(int id);
+
+        Task<List<BlogWithComentDTO>> GetBlogWithComents(int pageNumber, int pageSize);
     }
 }

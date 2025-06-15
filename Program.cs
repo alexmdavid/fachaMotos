@@ -93,6 +93,9 @@ builder.Services.AddScoped<IUserFavoritosService, UserFavoritosService>();
 builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 builder.Services.AddScoped<IBlogService, BlogService>();
 
+builder.Services.AddSingleton<CloudinaryService>();
+
+
 //mis hermosas cors
 builder.Services.AddCors(options =>
 {

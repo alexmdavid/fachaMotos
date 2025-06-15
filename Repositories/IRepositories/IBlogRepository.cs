@@ -1,4 +1,5 @@
 ﻿
+using fachaMotos.Models.DTOs;
 using fachaMotos.Models.Entities;
 
 public interface IBlogRepository
@@ -8,5 +9,6 @@ public interface IBlogRepository
     Task AddBlogAsync(Blog blog);
     Task UpdateBlogAsync(Blog blog);
     Task DeleteBlogAsync(int id);
-
+    Task<List<BlogWithComentDTO>> GetBlogWithComents(int pageNumber, int pageSize);
+    
 }

@@ -21,7 +21,9 @@ namespace fachaMotos.Services
                 Id = b.Id,
                 Titulo = b.Titulo,
                 Contenido = b.Contenido,
-                FechaPublicacion = b.FechaPublicacion
+                FechaPublicacion = b.FechaPublicacion,
+                ImagenUrl = b.ImagenUrl
+
             });
         }
 
@@ -35,7 +37,8 @@ namespace fachaMotos.Services
                 Id = blog.Id,
                 Titulo = blog.Titulo,
                 Contenido = blog.Contenido,
-                FechaPublicacion = blog.FechaPublicacion
+                FechaPublicacion = blog.FechaPublicacion,
+                ImagenUrl = blog.ImagenUrl
             };
         }
 
@@ -45,8 +48,11 @@ namespace fachaMotos.Services
             {
                 Titulo = blogDto.Titulo,
                 Contenido = blogDto.Contenido,
-                FechaPublicacion = blogDto.FechaPublicacion
+                FechaPublicacion = blogDto.FechaPublicacion,
+                ImagenUrl = blogDto.ImagenUrl,
+                Autor = blogDto.Autor 
             };
+
 
             await _blogRepository.AddBlogAsync(blog);
         }
@@ -58,8 +64,10 @@ namespace fachaMotos.Services
                 Id = blogDto.Id,
                 Titulo = blogDto.Titulo,
                 Contenido = blogDto.Contenido,
-                FechaPublicacion = blogDto.FechaPublicacion
+                FechaPublicacion = blogDto.FechaPublicacion,
+                ImagenUrl = blogDto.ImagenUrl
             };
+
 
             await _blogRepository.UpdateBlogAsync(blog);
         }
@@ -67,6 +75,11 @@ namespace fachaMotos.Services
         public async Task DeleteBlogAsync(int id)
         {
             await _blogRepository.DeleteBlogAsync(id);
+        }
+
+        public async Task<List<BlogWithComentDTO>> GetBlogWithComents(int pageNumber, int pageSize)
+        {
+            return await _blogRepository.GetBlogWithComents(pageNumber, pageSize);
         }
     }
 }
