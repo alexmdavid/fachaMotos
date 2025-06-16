@@ -76,7 +76,7 @@ namespace fachaMotos.Controllers
 
 
         [HttpGet("with-comments")]
-        public async Task<ActionResult<List<BlogWithComentDTO>>> GetBlogsWithComments(int pageNumber = 1, int pageSize = 10)
+        public async Task<ActionResult<List<BlogWithComentDTO>>> GetBlogsWithComments([FromQuery]int pageNumber = 1, [FromQuery]int pageSize = 10)
         {
             var blogs = await _blogService.GetBlogWithComents(pageNumber, pageSize);
             if (blogs == null || !blogs.Any()) return NotFound();

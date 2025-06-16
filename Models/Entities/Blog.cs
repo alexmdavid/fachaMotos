@@ -15,7 +15,7 @@ namespace fachaMotos.Models.Entities
 
         public DateTime FechaPublicacion { get; set; }
         public string Autor { get; set; }
-        public string? Categoria { get; set; } 
+        public string? Resumen { get; set; } 
         public string? ImagenUrl { get; set; }
         public string? Etiquetas { get; set; } 
         public List<ComentarioBlog> Comentarios { get; set; } = new List<ComentarioBlog>();

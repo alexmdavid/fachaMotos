@@ -60,7 +60,15 @@ namespace fachaMotos.Repositories
 
             var result = blogs.Select(b => new BlogWithComentDTO
             {
-                Blog = b,
+                Blog = new BlogDTO
+                {
+                    Id = b.Id,
+                    Titulo = b.Titulo,
+                    Contenido = b.Contenido,
+                    ImagenUrl = b.ImagenUrl,
+                    Autor = b.Autor,
+                    FechaPublicacion = b.FechaPublicacion
+                },
                 Comentarios = b.Comentarios.Select(c => new ComentarioBlogDTO
                 {
                     Id = c.Id,
