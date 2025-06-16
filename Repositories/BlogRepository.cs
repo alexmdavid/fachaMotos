@@ -67,7 +67,8 @@ namespace fachaMotos.Repositories
                     Contenido = b.Contenido,
                     ImagenUrl = b.ImagenUrl,
                     Autor = b.Autor,
-                    FechaPublicacion = b.FechaPublicacion
+                    FechaPublicacion = b.FechaPublicacion,
+                    Resumen = b.Resumen
                 },
                 Comentarios = b.Comentarios.Select(c => new ComentarioBlogDTO
                 {

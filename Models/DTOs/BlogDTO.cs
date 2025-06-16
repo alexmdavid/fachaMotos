@@ -11,6 +11,8 @@ namespace fachaMotos.Models.DTOs
             public string? ImagenUrl { get; set; }
             public string Autor { get; set; } 
 
+             public string Resumen { get; set; } 
+
 
 
 
