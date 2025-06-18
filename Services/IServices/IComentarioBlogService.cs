@@ -1,6 +1,18 @@
 ﻿namespace fachaMotos.Services.IServices
 {
-    public interface IComentarioBlogService
+    using global::fachaMotos.Models.DTOs.fachaMotos.Models.DTOs;
+    using global::fachaMotos.Models.DTOs;
+
+    namespace fachaMotos.Services
     {
+        public interface IComentarioBlogService
+        {
+            Task<ComentarioBlogDTO> CreateAsync(ComentarioBlogCreateDTO dto, int userId);
+            Task<List<ComentarioBlogDTO>> GetAllAsync();
+            Task<ComentarioBlogDTO?> GetByIdAsync(int id);
+            Task<bool> DeleteAsync(int id);
+
+        }
     }
+
 }

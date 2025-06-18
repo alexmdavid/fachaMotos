@@ -11,6 +11,10 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using fachaMotos.Services.IServices;
+using fachaMotos.Repositories.fachaMotos.Repositories;
+using fachaMotos.Services.IServices.fachaMotos.Services;
+using fachaMotos.IRepositories;
+using fachaMotos.IServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -94,6 +98,17 @@ builder.Services.AddScoped<IBlogRepository, BlogRepository>();
 builder.Services.AddScoped<IBlogService, BlogService>();
 
 builder.Services.AddSingleton<CloudinaryService>();
+
+builder.Services.AddScoped<IComentarioBlogRepository, ComentarioBlogRepository>();
+builder.Services.AddScoped<IComentarioBlogService, ComentarioBlogService>();
+
+builder.Services.AddScoped<IComentarioBlogReactionRepository, ComentarioBlogReactionRepository>();
+builder.Services.AddScoped<IComentarioBlogReactionService, ComentarioBlogReactionService>();
+
+builder.Services.AddScoped<IReviewReactionRepository, ReviewReactionRepository>();
+builder.Services.AddScoped<IReviewReactionService, ReviewReactionService>();
+
+
 
 
 //mis hermosas cors
