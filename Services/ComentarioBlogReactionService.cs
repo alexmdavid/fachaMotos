@@ -20,7 +20,7 @@ namespace fachaMotos.Services
             var reaction = new ComentarioBlogReaction
             {
                 ComentarioId = dto.ComentarioId,
-                UserId = dto.UserId,
+                UserId = userId,
                 Tipo = dto.Tipo,
                 Fecha = DateTime.UtcNow
             };

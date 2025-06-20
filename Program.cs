@@ -15,6 +15,8 @@ using fachaMotos.Repositories.fachaMotos.Repositories;
 using fachaMotos.Services.IServices.fachaMotos.Services;
 using fachaMotos.IRepositories;
 using fachaMotos.IServices;
+using System.Reflection;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -54,6 +56,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFilename);
+    c.IncludeXmlComments(xmlPath);
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Mi API", Version = "v1" });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -123,17 +128,24 @@ builder.Services.AddCors(options =>
 });
 
 
+
+
+
+
+
 var app = builder.Build();
 
 app.UseCors("AllowAll");
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "FachaMotos API V1");
+    c.RoutePrefix = "swagger"; 
+});
+
 
 app.UseHttpsRedirection();
 

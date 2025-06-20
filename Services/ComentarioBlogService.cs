@@ -1,4 +1,5 @@
-﻿using fachaMotos.Models.DTOs;
+﻿using fachaMotos.Enums;
+using fachaMotos.Models.DTOs;
 using fachaMotos.Models.DTOs.fachaMotos.Models.DTOs;
 using fachaMotos.Models.Entities;
 using fachaMotos.Repositories.IRepositories.fachaMotos.Repositories;
@@ -52,8 +53,8 @@ namespace fachaMotos.Services
                 Fecha = c.FechaComentario,
                 UsuarioNombre = c.Usuario?.Nombre ?? "Anónimo",
                 UsuarioFotoUrl = c.Usuario?.ImagenPerfilUrl ?? "",
-                CantidadLikes = c.likes,
-                CantidadUnlikes = c.UnLinkes
+                CantidadLikes = c.Reacciones.Count(r => r.Tipo == ReactionType.Like),
+                CantidadUnlikes = c.Reacciones.Count(r => r.Tipo == ReactionType.Unlike)
             }).ToList();
         }
 
@@ -69,8 +70,8 @@ namespace fachaMotos.Services
                 Fecha = c.FechaComentario,
                 UsuarioNombre = c.Usuario?.Nombre ?? "Anónimo",
                 UsuarioFotoUrl = c.Usuario?.ImagenPerfilUrl ?? "",
-                CantidadLikes = c.likes,
-                CantidadUnlikes = c.UnLinkes
+                CantidadLikes = c.Reacciones.Count(r => r.Tipo == ReactionType.Like),
+                CantidadUnlikes = c.Reacciones.Count(r => r.Tipo == ReactionType.Unlike) 
             };
         }
         public async Task<bool> DeleteAsync(int id)

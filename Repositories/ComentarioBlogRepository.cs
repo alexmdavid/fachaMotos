@@ -38,13 +38,16 @@ namespace fachaMotos.Repositories
             {
                 return await _context.ComentariosBlog
                     .Include(c => c.Usuario)
+                    .Include(c => c.Reacciones)
                     .ToListAsync();
+                    
             }
 
             public async Task<ComentarioBlog?> GetWithUsuarioByIdAsync(int id)
             {
                 return await _context.ComentariosBlog
                     .Include(c => c.Usuario)
+                    .Include(c => c.Reacciones)
                     .FirstOrDefaultAsync(c => c.Id == id);
             }
             public async Task<bool> DeleteAsync(int id)
