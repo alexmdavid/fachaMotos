@@ -50,7 +50,9 @@ namespace fachaMotos.Services
                 Contenido = blogDto.Contenido,
                 FechaPublicacion = blogDto.FechaPublicacion,
                 ImagenUrl = blogDto.ImagenUrl,
-                Autor = blogDto.Autor 
+                Autor = blogDto.Autor,
+                Resumen = blogDto.Resumen,
+                Etiquetas = blogDto.Etiquetas
             };
 
 
