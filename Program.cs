@@ -113,6 +113,8 @@ builder.Services.AddScoped<IComentarioBlogReactionService, ComentarioBlogReactio
 builder.Services.AddScoped<IReviewReactionRepository, ReviewReactionRepository>();
 builder.Services.AddScoped<IReviewReactionService, ReviewReactionService>();
 
+builder.Services.AddScoped<IAuthService, AuthService>();
+
 
 
 
