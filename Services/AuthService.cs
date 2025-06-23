@@ -17,7 +17,7 @@ namespace fachaMotos.Services
         {
             _userRepository = userRepository;
             _config = config;
-            _httpClient = new HttpClient(); // Puedes inyectarlo si prefieres
+            _httpClient = new HttpClient();
         }
 
         public async Task<AuthResponseDtoFacebook> LoginWithFacebookAsync(FacebookLoginDto dto)
@@ -33,7 +33,6 @@ namespace fachaMotos.Services
             if (fbUser == null || string.IsNullOrEmpty(fbUser.Email))
                 throw new Exception("No se pudo obtener la información del usuario de Facebook");
 
-            // Verifica o crea el usuario
             var user = await _userRepository.ObtenerPorCorreoAsync(fbUser.Email);
             if (user == null)
             {
