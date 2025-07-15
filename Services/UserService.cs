@@ -38,7 +38,9 @@ namespace fachaMotos.Services
             {
                 Nombre = dto.Nombre,
                 Correo = dto.Correo,
-                ClaveHash = hash
+                ClaveHash = hash,
+                ImagenPerfilUrl = dto.ImagenPerfil
+                
             };
             await _userRepository.AddUserAsync(nuevo); 
 
@@ -46,11 +48,12 @@ namespace fachaMotos.Services
             {
                 Id = nuevo.Id,  
                 Nombre = nuevo.Nombre,
-                Correo = nuevo.Correo
+                Correo = nuevo.Correo,
+               
             };
         }
 
-        public async Task UpdateUserAsync(UpdateUserDTO _user)
+        public async Task UpdateUserAsync(UpdateUserDTO _user)   
         {
             var user = new User
             {
