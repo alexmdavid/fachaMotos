@@ -42,7 +42,6 @@ namespace fachaMotos.Controllers
             if (reaction == null) return NotFound();
             return Ok(reaction);
         }
-
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
