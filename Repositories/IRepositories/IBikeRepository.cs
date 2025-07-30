@@ -12,8 +12,9 @@
             Task AddBikeAsync(Bike bike);
             Task UpdateBikeAsync(Bike bike);
             Task DeleteBikeAsync(int id);
-            Task<List<BikeWithRatingDTO>> GetBikesWithRatingsAsync();
-            Task<List<BikeWithRatingDTO>> GetBikesPagedWithRatingsAsync(int pageNumber, int pageSize);
+            Task<List<Bike>> GetAllBikesWithReviewsAsync();
+            Task<List<Bike>> GetBikesPagedWithReviewsAsync(int pageNumber, int pageSize);
+
         }
     }
 }

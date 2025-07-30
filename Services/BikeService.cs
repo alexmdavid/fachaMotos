@@ -1,5 +1,6 @@
 ﻿namespace fachaMotos.Services
 {
+    using global::fachaMotos.Enums;
     using global::fachaMotos.Models.DTOs;
     using global::fachaMotos.Models.Entities;
     using global::fachaMotos.Repositories.IRepositories.fachaMotos.Repositories;
@@ -122,13 +123,41 @@
             }
             public async Task<List<BikeWithRatingDTO>> GetBikesWithRatingsAsync()
             {
-                var bikesWithRatings = await _bikeRepository.GetBikesWithRatingsAsync();
-                return bikesWithRatings;
+                var bikes = await _bikeRepository.GetAllBikesWithReviewsAsync();
 
+                var result = bikes.Select(b => new BikeWithRatingDTO
+                {
+                    Bike = b,
+                    AvgRating = b.Reviews.Any() ? b.Reviews.Average(r => r.Calificacion) : 0
+                })
+                .OrderByDescending(x => x.AvgRating)
+                .ToList();
+
+                return result;
             }
+
             public async Task<List<BikeWithRatingDTO>> GetBikesPagedWithRatingsAsync(int pageNumber, int pageSize)
             {
-                return await _bikeRepository.GetBikesPagedWithRatingsAsync(pageNumber, pageSize);
+                var bikes = await _bikeRepository.GetBikesPagedWithReviewsAsync(pageNumber, pageSize);
+
+                var result = bikes.Select(b => new BikeWithRatingDTO
+                {
+                    Bike = b,
+                    AvgRating = b.Reviews.Any() ? b.Reviews.Average(r => r.Calificacion) : 0,
+                    Reviews = b.Reviews.Select(r => new ReviewDTO
+                    {
+                        Id = r.Id,
+                        Contenido = r.Comentario,
+                        Calificacion = r.Calificacion,
+                        Fecha = r.Fecha,
+                        UsuarioNombre = r.User.Nombre,
+                        UsuarioFotoUrl = r.User.ImagenPerfilUrl,
+                        CantidadLikes = r.Reacciones.Count(rr => rr.Tipo == ReactionType.Like),
+                        CantidadUnlikes = r.Reacciones.Count(rr => rr.Tipo == ReactionType.Unlike)
+                    }).ToList()
+                }).ToList();
+
+                return result;
             }
         }
     }
