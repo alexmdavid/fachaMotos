@@ -4,6 +4,8 @@ using fachaMotos.Models.Entities;
 using fachaMotos.Repositories.IRepositories.fachaMotos.Repositories;
 using fachaMotos.Services.IServices;
 using fachaMotos.WebConfig;
+using System.Data;
+using System;
 
 namespace fachaMotos.Services
 {
@@ -49,10 +51,13 @@ namespace fachaMotos.Services
             var token = Jwt.GenerarToken(user, _config);
             return new AuthResponseDtoFacebook { Token = token };
         }
-        public async Task<AuthResponseGoogleDTO> LoginWithGoogleAsync(GoogleLoginDto dto)
+       
+
+ public async Task<AuthResponseGoogleDTO> LoginWithGoogleAsync(GoogleLoginDto dto)
         {
-            var validationUrl = $"https://oauth2.googleapis.com/tokeninfo?id_token={dto.IdToken}";
-            var response = await _httpClient.GetAsync(validationUrl);
+            // Usamos el access_token para obtener la info del usuario
+            var userInfoUrl = $"https://www.googleapis.com/oauth2/v3/userinfo?access_token={dto.IdToken}";
+            var response = await _httpClient.GetAsync(userInfoUrl);
 
             if (!response.IsSuccessStatusCode)
                 throw new UnauthorizedAccessException("Token de Google inválido");
@@ -62,6 +67,7 @@ namespace fachaMotos.Services
             if (payload == null || string.IsNullOrEmpty(payload.Email))
                 throw new Exception("No se pudo obtener la información del usuario");
 
+            // Buscar o crear el usuario en la base de datos
             var user = await _userRepository.ObtenerPorCorreoAsync(payload.Email);
             if (user == null)
             {
@@ -69,15 +75,20 @@ namespace fachaMotos.Services
                 {
                     Nombre = payload.Name,
                     Correo = payload.Email,
-                    Rol = "Cliente"
+                    Rol = "Cliente",
+                    ClaveHash = null // <-- opcional, explícito
                 };
+
 
                 await _userRepository.AddUserAsync(user);
             }
 
+            // Generar el JWT propio
             var token = Jwt.GenerarToken(user, _config);
             return new AuthResponseGoogleDTO { Token = token };
         }
-    }
 
+    }
 }
+
+
