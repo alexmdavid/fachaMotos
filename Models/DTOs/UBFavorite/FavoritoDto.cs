@@ -1,4 +1,4 @@
-﻿namespace fachaMotos.Models.DTOs
+﻿namespace fachaMotos.Models.DTOs.UBFavorite
 {
     public class FavoritoDto
     {

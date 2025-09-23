@@ -1,4 +1,4 @@
-﻿using fachaMotos.Models.DTOs;
+﻿using fachaMotos.Models.DTOs.RReview;
 using fachaMotos.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;

@@ -1,13 +1,13 @@
 ﻿using fachaMotos.Enums;
 
-namespace fachaMotos.Models.DTOs
+namespace fachaMotos.Models.DTOs.RReview
 {
-    public class ComentarioBlogReactionDTO
+    public class ReviewReactionDTO
     {
         public int Id { get; set; }
-        public int ComentarioId { get; set; }
+        public int ReviewId { get; set; }
         public int UserId { get; set; }
-        public string NombreUsuario { get; set; }
+        public string UsuarioNombre { get; set; }
         public ReactionType Tipo { get; set; }
         public DateTime Fecha { get; set; }
     }

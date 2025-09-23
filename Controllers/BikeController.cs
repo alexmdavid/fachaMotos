@@ -2,7 +2,7 @@
 using fachaMotos.Models.Entities;
 using fachaMotos.Services.IServices.fachaMotos.Services.IServices;
 using Microsoft.AspNetCore.Authorization;
-using fachaMotos.Models.DTOs;
+using fachaMotos.Models.DTOs.Bike;
 
 namespace fachaMotos.Controllers
 {

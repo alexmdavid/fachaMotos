@@ -1,4 +1,4 @@
-﻿using fachaMotos.Models.DTOs;
+﻿using fachaMotos.Models.DTOs.CBlog;
 using fachaMotos.Models.DTOs.fachaMotos.Models.DTOs;
 using fachaMotos.Services;
 using fachaMotos.Services.IServices.fachaMotos.Services;

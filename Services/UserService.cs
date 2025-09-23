@@ -1,4 +1,5 @@
-using fachaMotos.Models.DTOs;
+using fachaMotos.Models.DTOs.Auth;
+using fachaMotos.Models.DTOs.User;
 using fachaMotos.Models.Entities;
 using fachaMotos.Repositories.IRepositories.fachaMotos.Repositories;
 using fachaMotos.Services.IServices.fachaMotos.Services.IServices;

@@ -1,5 +1,5 @@
 ﻿using fachaMotos.IServices;
-using fachaMotos.Models.DTOs;
+using fachaMotos.Models.DTOs.RCBlog;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 

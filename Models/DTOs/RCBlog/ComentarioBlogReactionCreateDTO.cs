@@ -1,6 +1,6 @@
 ﻿using fachaMotos.Enums;
 
-namespace fachaMotos.Models.DTOs
+namespace fachaMotos.Models.DTOs.RCBlog
 {
     public class ComentarioBlogReactionCreateDTO
     {

@@ -1,5 +1,5 @@
 ﻿using fachaMotos.IRepositories;
-using fachaMotos.Models.DTOs;
+using fachaMotos.Models.DTOs.RReview;
 using fachaMotos.Models.Entities;
 using fachaMotos.Services.IServices;
 

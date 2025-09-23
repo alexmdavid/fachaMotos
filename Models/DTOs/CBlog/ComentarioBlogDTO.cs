@@ -1,16 +1,14 @@
-﻿namespace fachaMotos.Models.DTOs
+﻿namespace fachaMotos.Models.DTOs.CBlog
 {
-    public class ReviewDTO
+    public class ComentarioBlogDTO
     {
         public int Id { get; set; }
         public string Contenido { get; set; }
-        public double Calificacion { get; set; }
         public DateTime Fecha { get; set; }
         public string UsuarioNombre { get; set; }
         public string UsuarioFotoUrl { get; set; }
         public int CantidadLikes { get; set; }
         public int CantidadUnlikes { get; set; }
     }
-
 
 }

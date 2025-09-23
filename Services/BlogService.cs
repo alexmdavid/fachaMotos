@@ -1,4 +1,4 @@
-﻿using fachaMotos.Models.DTOs;
+﻿using fachaMotos.Models.DTOs.Blog;
 using fachaMotos.Models.Entities;
 using fachaMotos.Services.IServices;
 

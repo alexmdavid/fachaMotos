@@ -1,4 +1,4 @@
-﻿using fachaMotos.Models.DTOs;
+﻿using fachaMotos.Models.DTOs.RCBlog;
 
 namespace fachaMotos.IServices
 {

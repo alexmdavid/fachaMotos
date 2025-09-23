@@ -1,4 +1,4 @@
-﻿using fachaMotos.Models.DTOs;
+﻿using fachaMotos.Models.DTOs.RReview;
 
 namespace fachaMotos.Services.IServices
 {

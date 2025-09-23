@@ -1,6 +1,6 @@
 ﻿using fachaMotos.Models.Entities;
 
-namespace fachaMotos.Models.DTOs
+namespace fachaMotos.Models.DTOs.Blog
 {
         public class BlogDTO
         {

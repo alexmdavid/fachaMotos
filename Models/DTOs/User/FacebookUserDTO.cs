@@ -1,4 +1,4 @@
-﻿namespace fachaMotos.Models.DTOs
+﻿namespace fachaMotos.Models.DTOs.User
 {
     public class FacebookUserDTO
     {

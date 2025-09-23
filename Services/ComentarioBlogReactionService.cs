@@ -1,6 +1,6 @@
 ﻿using fachaMotos.IRepositories;
 using fachaMotos.IServices;
-using fachaMotos.Models.DTOs;
+using fachaMotos.Models.DTOs.RCBlog;
 using fachaMotos.Models.Entities;
 using fachaMotos.Repositories;
 

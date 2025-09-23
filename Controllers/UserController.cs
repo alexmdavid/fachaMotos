@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using fachaMotos.Services.IServices.fachaMotos.Services.IServices;
-using fachaMotos.Models.DTOs;
+using fachaMotos.Models.DTOs.Auth;
+using fachaMotos.Models.DTOs.User;
 
 namespace fachaMotos.Controllers
 {

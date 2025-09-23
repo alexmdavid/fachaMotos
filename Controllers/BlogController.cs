@@ -1,4 +1,4 @@
-﻿using fachaMotos.Models.DTOs;
+﻿using fachaMotos.Models.DTOs.Blog;
 using fachaMotos.Services;
 using fachaMotos.Services.IServices;
 using Microsoft.AspNetCore.Authorization;

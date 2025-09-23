@@ -1,5 +1,5 @@
 ﻿using fachaMotos.Enums;
-using fachaMotos.Models.DTOs;
+using fachaMotos.Models.DTOs.CBlog;
 using fachaMotos.Models.DTOs.fachaMotos.Models.DTOs;
 using fachaMotos.Models.Entities;
 using fachaMotos.Repositories.IRepositories.fachaMotos.Repositories;

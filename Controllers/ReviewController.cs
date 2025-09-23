@@ -3,7 +3,7 @@ using fachaMotos.Models.Entities;
 using fachaMotos.Services.IServices.fachaMotos.Services.IServices;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
-using fachaMotos.Models.DTOs;
+using fachaMotos.Models.DTOs.Review;
 
 namespace fachaMotos.Controllers
 {

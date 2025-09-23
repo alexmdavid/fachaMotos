@@ -1,4 +1,4 @@
-﻿using fachaMotos.Models.DTOs;
+﻿using fachaMotos.Models.DTOs.Auth;
 using fachaMotos.Models.DTOs.fachaMotos.Models.DTOs;
 
 namespace fachaMotos.Services.IServices

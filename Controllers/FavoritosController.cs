@@ -1,10 +1,10 @@
-﻿using fachaMotos.Models.DTOs;
+﻿using fachaMotos.Models.DTOs.UBFavorite;
 using fachaMotos.Services.IServices.fachaMotos.Services.IServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-    namespace fachaMotos.Controllers
+namespace fachaMotos.Controllers
     {
         [ApiController]
         [Route("api/[controller]")]

@@ -1,11 +1,12 @@
-﻿using fachaMotos.Models.DTOs;
-using fachaMotos.Models.DTOs.fachaMotos.Models.DTOs;
+﻿using fachaMotos.Models.DTOs.fachaMotos.Models.DTOs;
 using fachaMotos.Models.Entities;
 using fachaMotos.Repositories.IRepositories.fachaMotos.Repositories;
 using fachaMotos.Services.IServices;
 using fachaMotos.WebConfig;
 using System.Data;
 using System;
+using fachaMotos.Models.DTOs.Auth;
+using fachaMotos.Models.DTOs.User;
 
 namespace fachaMotos.Services
 {

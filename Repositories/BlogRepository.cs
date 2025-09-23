@@ -1,6 +1,8 @@
 ﻿using fachaMotos.Data;
 using fachaMotos.Enums;
 using fachaMotos.Models.DTOs;
+using fachaMotos.Models.DTOs.Blog;
+using fachaMotos.Models.DTOs.CBlog;
 using fachaMotos.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
