@@ -26,7 +26,7 @@ namespace fachaMotos.Models.Entities
         public List<UserBikeFavorita> MotosFavoritas { get; set; } = new List<UserBikeFavorita>();
 
         [Required]
-        public string Rol { get; set; }= "Administrador";
+        public string Rol { get; set; }= "Usuario";
         public List<ComentarioBlog> ComentariosEnBlogs { get; set; } = new List<ComentarioBlog>();
         public List<Review> Reviews { get; set; } = new List<Review>();
         public List<ReviewReaction> ReviewReacciones { get; set; } = new List<ReviewReaction>();
