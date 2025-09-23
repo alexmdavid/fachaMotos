@@ -1,6 +1,7 @@
 ﻿namespace fachaMotos.Services.IServices
 {
     using global::fachaMotos.Models.DTOs;
+    using global::fachaMotos.Models.DTOs.Review;
     using global::fachaMotos.Models.Entities;
 
     namespace fachaMotos.Services.IServices

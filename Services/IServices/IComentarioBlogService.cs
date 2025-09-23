@@ -2,6 +2,7 @@
 {
     using global::fachaMotos.Models.DTOs.fachaMotos.Models.DTOs;
     using global::fachaMotos.Models.DTOs;
+    using global::fachaMotos.Models.DTOs.CBlog;
 
     namespace fachaMotos.Services
     {

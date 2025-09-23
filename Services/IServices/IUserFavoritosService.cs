@@ -2,6 +2,7 @@
 {
     using global::fachaMotos.Models.DTOs.fachaMotos.DTOs;
     using global::fachaMotos.Models.DTOs;
+    using global::fachaMotos.Models.DTOs.UBFavorite;
 
     namespace fachaMotos.Services.IServices
     {
