@@ -4,6 +4,7 @@
     using global::fachaMotos.Models.DTOs;
     using global::fachaMotos.Repositories.IRepositories;
     using global::fachaMotos.Services.IServices.fachaMotos.Services.IServices;
+    using global::fachaMotos.Models.DTOs.UBFavorite;
 
     namespace fachaMotos.Services
     {

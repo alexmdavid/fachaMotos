@@ -1,7 +1,7 @@
 ﻿using fachaMotos.Models.DTOs.Review;
 using fachaMotos.Models.Entities;
 
-namespace fachaMotos.Models.DTOs.Bike
+namespace fachaMotos.Models.DTOs.Bbike
 {
     public class BikeWithRatingDTO
     {
