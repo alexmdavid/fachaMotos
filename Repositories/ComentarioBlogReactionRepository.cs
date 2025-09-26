@@ -2,6 +2,7 @@
 using fachaMotos.IRepositories;
 using fachaMotos.Models.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace fachaMotos.Repositories
 {
@@ -43,6 +44,27 @@ namespace fachaMotos.Repositories
             _context.ComentariosBlogReaction.Remove(reaction);
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        
+        public async Task<ComentarioBlogReaction?> GetByUserAndComentarioAsync(int comentarioId, int userId)
+        {
+            return await _context.ComentariosBlogReaction
+                .Include(r => r.Usuario)
+                .FirstOrDefaultAsync(r => r.ComentarioId == comentarioId && r.UserId == userId);
+        }
+        public async Task<ComentarioBlogReaction> UpdateAsync(ComentarioBlogReaction reaction)
+        {
+            _context.ComentariosBlogReaction.Update(reaction);
+            await _context.SaveChangesAsync();
+            return reaction;
+        }
+
+        public async Task<ComentarioBlogReaction?> GetByConditionAsync(Expression<Func<ComentarioBlogReaction, bool>> predicate)
+        {
+            return await _context.ComentariosBlogReaction
+                .Include(r => r.Usuario)
+                .FirstOrDefaultAsync(predicate);
         }
     }
 }

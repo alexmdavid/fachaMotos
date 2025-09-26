@@ -2,8 +2,6 @@
 {
     using global::fachaMotos.Enums;
     using global::fachaMotos.Models.DTOs;
-    using global::fachaMotos.Models.DTOs.Bbike;
-    using global::fachaMotos.Models.DTOs.Bike;
     using global::fachaMotos.Models.DTOs.Review;
     using global::fachaMotos.Models.Entities;
     using global::fachaMotos.Repositories.IRepositories.fachaMotos.Repositories;

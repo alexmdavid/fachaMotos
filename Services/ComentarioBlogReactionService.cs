@@ -17,6 +17,27 @@ namespace fachaMotos.Services
 
         public async Task<ComentarioBlogReactionDTO> CreateAsync(ComentarioBlogReactionCreateDTO dto, int userId)
         {
+          
+            var existing = await _repository.GetByConditionAsync(
+                r => r.ComentarioId == dto.ComentarioId && r.UserId == userId
+            );
+
+            if (existing != null)
+            {
+                existing.Tipo = dto.Tipo;
+                existing.Fecha = DateTime.UtcNow;
+                await _repository.UpdateAsync(existing);
+
+                return new ComentarioBlogReactionDTO
+                {
+                    Id = existing.Id,
+                    ComentarioId = existing.ComentarioId,
+                    UserId = userId,
+                    NombreUsuario = existing.Usuario?.Nombre ?? "Anónimo",
+                    Tipo = existing.Tipo,
+                    Fecha = existing.Fecha
+                };
+            }
             var reaction = new ComentarioBlogReaction
             {
                 ComentarioId = dto.ComentarioId,

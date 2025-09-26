@@ -1,4 +1,5 @@
-﻿namespace fachaMotos.Models.DTOs.Bike
+﻿
+namespace fachaMotos.Models.DTOs
 {
     public class BikeDTO
     {
