@@ -20,7 +20,7 @@ namespace fachaMotos.Models.Entities
         public string Correo { get; set; }
 
         [MinLength(8)]
-        public string ClaveHash { get; set; }
+        public string? ClaveHash { get; set; }
         public string? ImagenPerfilUrl { get; set; } = null;
         public List<UserBikeFavorita> MotosFavoritas { get; set; } = new List<UserBikeFavorita>();
 
